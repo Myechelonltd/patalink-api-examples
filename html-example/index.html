@@ -165,7 +165,7 @@
             // 2. Poll for final status
             const poll = setInterval(async () => {
                 try {
-                    const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${transactionId}`, {
+                    const res = await fetch(`https://patalink.me/api/pay/${transactionId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
 
