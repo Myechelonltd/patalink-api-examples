@@ -14,9 +14,9 @@ app.use(express.json());
 
 // Initialize PataLink client
 const client = createClient({
-  apiKey: process.env.PATALINK_API_KEY || "pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx",
-  encryptionKey: process.env.PATALINK_ENCRYPTION_KEY || "GKRy2jlusn3uAzhrU87qKH9SbQi+26ni8rg7PXnToyg=",
-  baseUrl: process.env.PATALINK_BASE_URL || "https://genuine-choux-bd2e69.netlify.app",
+  apiKey: process.env.PATALINK_API_KEY || "pt_test_I2IDt-mrT0QNGdhH9UseJzP6fc-dIVGx",
+  encryptionKey: process.env.PATALINK_ENCRYPTION_KEY || "GKRy2jlusn3uAzhrU87qKH9S9494526ni8rg7PXnToyg=",
+  baseUrl: process.env.PATALINK_BASE_URL || "https://patalink.me",
 });
 
 /**

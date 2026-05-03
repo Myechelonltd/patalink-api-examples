@@ -110,9 +110,9 @@
 
                     <div class="flex justify-center py-4">
                         <!-- PataLink Integration -->
-                        <payment-modal id="donationModal" base-url="https://genuine-choux-bd2e69.netlify.app"
-                            api-key="pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx"
-                            encryption-key="GKRy2jlusn3uAzhrU87qKH9SbQi+26ni8rg7PXnToyg="
+                        <payment-modal id="donationModal" base-url="https://patalink.me"
+                            api-key="pt_test_I2IDt-mrT0QNGdhH9UseJzP6fc-dIVGx"
+                            encryption-key="GKRy2jlusn3uAzhrU87qKH9S9494526ni8rg7PXnToyg="
                             amounts="[5000, 10000, 25000, 50000]" custom-text="Make a Difference" custom-color="#EF4444"
                             theme-color="#EF4444" creator-name="Hope for Children" company-name="Hope for Children"
                             modal-background-color="#0f172a" callback-url="http://localhost:5173"></payment-modal>
@@ -195,7 +195,7 @@
 
             const cardPoll = setInterval(async () => {
                 try {
-                    const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${trackingId}`, {
+                    const res = await fetch(`https://patalink.me/api/pay/${trackingId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
                     const data = await res.json();

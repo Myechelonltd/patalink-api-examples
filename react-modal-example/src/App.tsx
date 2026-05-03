@@ -67,8 +67,8 @@ function App() {
       // Start Polling for status
       const pollInterval = setInterval(async () => {
         try {
-          const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${data.transactionId}`, {
-            headers: { 'Authorization': 'Bearer pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx' }
+          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/api/pay/${data.transactionId}`, {
+            headers: { 'Authorization': `Bearer ${import.meta.env.VITE_PATALINK_API_KEY}` }
           });
           const result = await res.json();
 
@@ -104,8 +104,8 @@ function App() {
 
       const cardPoll = setInterval(async () => {
         try {
-          const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${trackingId}`, {
-            headers: { 'Authorization': 'Bearer pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx' }
+          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/api/pay/${trackingId}`, {
+            headers: { 'Authorization': `Bearer ${import.meta.env.VITE_PATALINK_API_KEY}` }
           });
           const data = await res.json();
 
@@ -244,9 +244,9 @@ function App() {
                   <div className="flex justify-center">
                     {totalPrice > 0 && (
                       <PaymentModal
-                        apiKey="pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx"
-                        encryptionKey="GKRy2jlusn3uAzhrU87qKH9SbQi+26ni8rg7PXnToyg="
-                        baseUrl="https://genuine-choux-bd2e69.netlify.app"
+                        apiKey={import.meta.env.VITE_PATALINK_API_KEY}
+                        encryptionKey={import.meta.env.VITE_PATALINK_ENCRYPTION_KEY}
+                        baseUrl={import.meta.env.VITE_PATALINK_BASE_URL}
                         fixedAmount={totalPrice > 0 ? totalPrice : undefined}
                         customText={totalPrice > 0 ? `Book ${quantity} Ticket(s)` : "Select Ticket Type"}
                         customColor="#9333ea"
