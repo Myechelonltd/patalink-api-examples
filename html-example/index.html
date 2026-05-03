@@ -165,7 +165,7 @@
             // 2. Poll for final status
             const poll = setInterval(async () => {
                 try {
-                    const res = await fetch(`https://patalink.me/api/pay/${transactionId}`, {
+                    const res = await fetch(`${modal.getAttribute('base-url')}/api/pay/${transactionId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
 
@@ -195,7 +195,7 @@
 
             const cardPoll = setInterval(async () => {
                 try {
-                    const res = await fetch(`https://patalink.me/api/pay/${trackingId}`, {
+                    const res = await fetch(`${modal.getAttribute('base-url')}/api/pay/${trackingId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
                     const data = await res.json();
