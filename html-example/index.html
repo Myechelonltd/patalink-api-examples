@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hope for Children | Empowering the Future</title>
+
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Import PataLink Web Component -->
+    <script type="module" src="https://esm.sh/@patalink/html-payment-modal"></script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+        }
+
+        .hero-bg {
+            background-image: radial-gradient(circle at top right, rgba(239, 68, 68, 0.1), transparent),
+                radial-gradient(circle at bottom left, rgba(30, 41, 59, 1), transparent);
+        }
+    </style>
+</head>
+
+<body class="hero-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="border-b border-white/10 px-8 py-6 flex justify-between items-center glass-card sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center text-xl shadow-lg shadow-red-500/20">
+                ❤️</div>
+            <span class="text-xl font-bold tracking-tight">HOPE<span class="text-red-500">CHILDREN</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+            <a href="#" class="hover:text-red-500 transition-colors">Our Mission</a>
+            <a href="#" class="hover:text-red-500 transition-colors">Projects</a>
+            <a href="#" class="hover:text-red-500 transition-colors">Transparency</a>
+        </div>
+    </nav>
+
+    <!-- Main Hero -->
+    <main class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-widest">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    Live Campaign: Rwanda 2026
+                </div>
+                <h1 class="text-6xl font-bold leading-tight">Every Child Deserves <br /><span
+                        class="text-red-500 italic">a Future.</span></h1>
+                <p class="text-lg text-slate-400 leading-relaxed max-w-lg">
+                    Your contribution provides clean water, nutritious meals, and quality education to children in
+                    underserved communities. 100% of your donation goes directly to the field.
+                </p>
+
+                <div class="grid grid-cols-3 gap-6 pt-4">
+                    <div>
+                        <div class="text-3xl font-bold">50K+</div>
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Lives Impacted</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">15+</div>
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Countries</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">200+</div>
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Schools Built</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation Card -->
+            <div class="glass-card rounded-3xl p-10 space-y-8 shadow-2xl relative overflow-hidden group">
+                <div
+                    class="absolute -top-24 -right-24 w-48 h-48 bg-red-500/10 rounded-full blur-3xl group-hover:bg-red-500/20 transition-all duration-700">
+                </div>
+
+                <div class="space-y-2 text-center">
+                    <h2 class="text-2xl font-bold">Secure Donation</h2>
+                    <p class="text-sm text-slate-400 italic">Powered by PataLink</p>
+                </div>
+
+                <div class="p-6 bg-slate-800/50 rounded-2xl border border-white/5 space-y-4">
+                    <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-500">
+                        <span>Select Amount</span>
+                        <span class="text-red-400">RWF</span>
+                    </div>
+
+                    <div class="flex justify-center py-4">
+                        <!-- PataLink Integration -->
+                        <payment-modal id="donationModal" base-url="https://genuine-choux-bd2e69.netlify.app"
+                            api-key="pt_live_I2IDt-mrT0QNGdhH5UseJzP6rc-dIVGx"
+                            encryption-key="GKRy2jlusn3uAzhrU87qKH9SbQi+26ni8rg7PXnToyg="
+                            amounts="[5000, 10000, 25000, 50000]" custom-text="Make a Difference" custom-color="#EF4444"
+                            theme-color="#EF4444" creator-name="Hope for Children" company-name="Hope for Children"
+                            modal-background-color="#0f172a" callback-url="http://localhost:5173"></payment-modal>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed">
+                        Encrypted & Secure Transaction <br />
+                        Registered Charity #12345
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Status Overlays -->
+    <div id="statusOverlay"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden animate-in fade-in duration-300">
+        <div class="glass-card p-12 rounded-3xl max-w-md w-full text-center space-y-6 shadow-2xl scale-in-center">
+            <div id="statusIcon" class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl"></div>
+            <h3 id="statusTitle" class="text-3xl font-bold"></h3>
+            <p id="statusMessage" class="text-slate-400"></p>
+            <button onclick="hideStatus()"
+                class="w-full py-4 rounded-xl bg-slate-800 font-bold hover:bg-slate-700 transition-all">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("donationModal");
+        const overlay = document.getElementById("statusOverlay");
+        const icon = document.getElementById("statusIcon");
+        const title = document.getElementById("statusTitle");
+        const message = document.getElementById("statusMessage");
+
+        // 1. Handle Initialization & Polling
+        modal.addEventListener("payment-success", (e) => {
+            const { data, error } = e.detail;
+
+            if (error) {
+                showStatus('error', 'Initialization Failed', error.message);
+                return;
+            }
+
+            const { transactionId } = data;
+
+            // Show "Verifying" state
+            showStatus('pending', 'Verifying Payment...', 'Please wait while we confirm your contribution.');
+
+            // 2. Poll for final status
+            const poll = setInterval(async () => {
+                try {
+                    const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${transactionId}`, {
+                        headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
+                    });
+
+                    if (!res.ok) throw new Error('Network error');
+
+                    const { status, reason } = await res.json();
+
+                    if (status === 'success') {
+                        clearInterval(poll);
+                        showStatus('success', 'Thank You! 🎉', 'Your donation has been received and will be put to work immediately.');
+                    } else if (status === 'failed' || status === 'rejected') {
+                        clearInterval(poll);
+                        showStatus('error', 'Payment Failed', reason || 'Transaction was declined by provider.');
+                    }
+                } catch (err) {
+                    console.error('Polling error:', err);
+                }
+            }, 4000);
+        });
+
+        // 3. Handle Card Redirect Return
+        const params = new URLSearchParams(window.location.search);
+        const trackingId = params.get('OrderTrackingId');
+
+        if (trackingId) {
+            showStatus('pending', 'Confirming Card Payment...', 'Confirming with PesaPal...');
+
+            const cardPoll = setInterval(async () => {
+                try {
+                    const res = await fetch(`https://genuine-choux-bd2e69.netlify.app/api/pay/${trackingId}`, {
+                        headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
+                    });
+                    const data = await res.json();
+
+                    if (data.status === 'success') {
+                        clearInterval(cardPoll);
+                        showStatus('success', 'Payment Confirmed! 🎉', 'Your card payment was successful.');
+                        // Clean URL
+                        window.history.replaceState({}, document.title, "/");
+                    } else if (data.status === 'failed') {
+                        clearInterval(cardPoll);
+                        showStatus('error', 'Payment Failed', 'Card transaction could not be completed.');
+                    }
+                } catch (err) {
+                    console.error('Check failed:', err);
+                }
+            }, 3000);
+        }
+
+        function showStatus(type, t, msg) {
+            overlay.classList.remove('hidden');
+            title.innerText = t;
+            message.innerText = msg;
+
+            if (type === 'success') {
+                icon.innerHTML = '✅';
+                icon.className = 'w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl bg-green-500/20 text-green-500';
+            } else if (type === 'error') {
+                icon.innerHTML = '❌';
+                icon.className = 'w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl bg-red-500/20 text-red-500';
+            } else {
+                icon.innerHTML = '⏳';
+                icon.className = 'w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl bg-blue-500/20 text-blue-500 animate-pulse';
+            }
+        }
+
+        function hideStatus() {
+            overlay.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>
