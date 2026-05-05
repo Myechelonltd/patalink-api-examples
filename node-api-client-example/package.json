@@ -11,7 +11,7 @@
     "dev": "node test-server.js"
   },
   "dependencies": {
-    "@patalink/node-api-client": "^1.0.5",
+    "@patalink/node-api-client": "^1.0.6",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",

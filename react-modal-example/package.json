@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@patalink/node-api-client": "^1.0.5",
-    "@patalink/react-payment-modal": "^1.1.9",
+    "@patalink/node-api-client": "^1.0.6",
+    "@patalink/react-payment-modal": "^1.2.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",

@@ -67,7 +67,7 @@ function App() {
       // Start Polling for status
       const pollInterval = setInterval(async () => {
         try {
-          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/api/pay/${data.transactionId}`, {
+          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/pay/${data.transactionId}`, {
             headers: { 'Authorization': `Bearer ${import.meta.env.VITE_PATALINK_API_KEY}` }
           });
           const result = await res.json();
@@ -104,7 +104,7 @@ function App() {
 
       const cardPoll = setInterval(async () => {
         try {
-          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/api/pay/${trackingId}`, {
+          const res = await fetch(`${import.meta.env.VITE_PATALINK_BASE_URL}/pay/${trackingId}`, {
             headers: { 'Authorization': `Bearer ${import.meta.env.VITE_PATALINK_API_KEY}` }
           });
           const data = await res.json();

@@ -110,7 +110,7 @@
 
                     <div class="flex justify-center py-4">
                         <!-- PataLink Integration -->
-                        <payment-modal id="donationModal" base-url="https://patalink.me"
+                        <payment-modal id="donationModal" base-url="https://api.patalink.me"
                             api-key="pt_test_I2IDt-mrT0QNGdhH9UseJzP6fc-dIVGx"
                             encryption-key="GKRy2jlusn3uAzhrU87qKH9S9494526ni8rg7PXnToyg="
                             amounts="[5000, 10000, 25000, 50000]" custom-text="Make a Difference" custom-color="#EF4444"
@@ -165,7 +165,7 @@
             // 2. Poll for final status
             const poll = setInterval(async () => {
                 try {
-                    const res = await fetch(`${modal.getAttribute('base-url')}/api/pay/${transactionId}`, {
+                    const res = await fetch(`${modal.getAttribute('base-url')}/pay/${transactionId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
 
@@ -195,7 +195,7 @@
 
             const cardPoll = setInterval(async () => {
                 try {
-                    const res = await fetch(`${modal.getAttribute('base-url')}/api/pay/${trackingId}`, {
+                    const res = await fetch(`${modal.getAttribute('base-url')}/pay/${trackingId}`, {
                         headers: { 'Authorization': `Bearer ${modal.getAttribute('api-key')}` }
                     });
                     const data = await res.json();

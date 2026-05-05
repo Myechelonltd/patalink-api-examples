@@ -1,10 +1,10 @@
 import express from "express";
-import { createRequire } from 'module';
+import { createRequire } from "module";
 import dotenv from "dotenv";
 // import { createClient } from '@patalink/node-api-client';
 
 const require = createRequire(import.meta.url);
-const { createClient } = require('@patalink/node-api-client'); // Using standard client
+const { createClient } = require("@patalink/node-api-client"); // Using standard client
 
 // Load environment variables
 dotenv.config();
@@ -14,9 +14,12 @@ app.use(express.json());
 
 // Initialize PataLink client
 const client = createClient({
-  apiKey: process.env.PATALINK_API_KEY || "pt_test_I2IDt-mrT0QNGdhH9UseJzP6fc-dIVGx",
-  encryptionKey: process.env.PATALINK_ENCRYPTION_KEY || "GKRy2jlusn3uAzhrU87qKH9S9494526ni8rg7PXnToyg=",
-  baseUrl: process.env.PATALINK_BASE_URL || "https://patalink.me",
+  apiKey:
+    process.env.PATALINK_API_KEY || "pt_test_I2IDt-mrT0QNGdhH9UseJzP6fc-dIVGx",
+  encryptionKey:
+    process.env.PATALINK_ENCRYPTION_KEY ||
+    "GKRy2jlusn3uAzhrU87qKH9S9494526ni8rg7PXnToyg=",
+  baseUrl: process.env.PATALINK_BASE_URL || "https://api.patalink.me",
 });
 
 /**
@@ -26,7 +29,7 @@ app.get("/", (req, res) => {
   res.json({
     status: "online",
     service: "PataLink Payment Gateway Example",
-    version: "2.0.0"
+    version: "2.0.0",
   });
 });
 
@@ -36,11 +39,23 @@ app.get("/", (req, res) => {
  */
 app.post("/api/payments/initiate", async (req, res) => {
   try {
-    const { amount, paymentMethod, phoneNumber, customerName, customerEmail, callbackUrl } = req.body;
+    const {
+      amount,
+      paymentMethod,
+      phoneNumber,
+      customerName,
+      customerEmail,
+      callbackUrl,
+    } = req.body;
 
     // Basic Validation
     if (!amount || !paymentMethod || !phoneNumber) {
-      return res.status(400).json({ error: "Missing required payment fields (amount, paymentMethod, phoneNumber)" });
+      return res
+        .status(400)
+        .json({
+          error:
+            "Missing required payment fields (amount, paymentMethod, phoneNumber)",
+        });
     }
 
     // Call PataLink SDK
@@ -50,7 +65,7 @@ app.post("/api/payments/initiate", async (req, res) => {
       phoneNumber,
       customerName: customerName || "Guest Customer",
       customerEmail: customerEmail || "customer@example.com",
-      callbackUrl: callbackUrl || "https://your-site.com/callback"
+      callbackUrl: callbackUrl || "https://your-site.com/callback",
     });
 
     console.log(`[PAYMENT_INITIATED] ID: ${payment.transactionId}`);
@@ -59,14 +74,13 @@ app.post("/api/payments/initiate", async (req, res) => {
       success: true,
       transactionId: payment.transactionId,
       redirectUrl: payment.redirectUrl, // Useful for Card payments
-      message: "Payment request sent to provider"
+      message: "Payment request sent to provider",
     });
-
   } catch (error) {
     console.error("[PAYMENT_ERROR]", error);
     res.status(500).json({
       success: false,
-      error: error.message || "Failed to initiate payment"
+      error: error.message || "Failed to initiate payment",
     });
   }
 });
@@ -79,7 +93,8 @@ app.get("/api/payments/:id/verify", async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!id) return res.status(400).json({ error: "Transaction ID is required" });
+    if (!id)
+      return res.status(400).json({ error: "Transaction ID is required" });
 
     // Call PataLink SDK
     const statusData = await client.getTransactionStatus(id);
@@ -91,14 +106,13 @@ app.get("/api/payments/:id/verify", async (req, res) => {
       status: statusData.status, // PENDING, COMPLETED, FAILED, REJECTED
       amount: statusData.amount,
       reason: statusData.reason,
-      verifiedAt: new Date().toISOString()
+      verifiedAt: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error("[VERIFY_ERROR]", error);
     res.status(500).json({
       success: false,
-      error: error.message || "Failed to verify payment"
+      error: error.message || "Failed to verify payment",
     });
   }
 });
